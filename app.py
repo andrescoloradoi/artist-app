@@ -15,7 +15,7 @@ import os
 # ================== CONFIGURACIÓN ==================
 CLIENT_ID = st.secrets.get("SPOTIFY_CLIENT_ID", "TU_CLIENT_ID")
 CLIENT_SECRET = st.secrets.get("SPOTIFY_CLIENT_SECRET", "TU_CLIENT_SECRET")
-REDIRECT_URI = "https://artist-app-638wq178jx9.streamlit.app/callback"
+REDIRECT_URI = "https://artist-app-dxsuetgppptgsruhsrcvde.streamlit.app/callback"
 SCOPE = "user-read-private user-read-email user-top-read user-read-recently-played"
 
 # ================== FUNCIONES OAUTH ==================
@@ -82,7 +82,7 @@ def predict_popularity(df):
 st.set_page_config(page_title="Artista Insights", layout="wide")
 st.title("🎧 Artist Insights Dashboard")
 
-query_params = st.experimental_get_query_params()
+query_params = st.st.query_params()
 code = query_params.get("code", [None])[0]
 
 if not code:
