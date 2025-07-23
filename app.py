@@ -18,6 +18,10 @@ CLIENT_SECRET = st.secrets.get("SPOTIFY_CLIENT_SECRET", "TU_CLIENT_SECRET")
 REDIRECT_URI = "https://artist-app-dxsuetgppptgsruhsrcvde.streamlit.app/callback"
 SCOPE = "user-read-private user-read-email user-top-read user-read-recently-played"
 
+if "TU_CLIENT_ID" in CLIENT_ID or "TU_CLIENT_SECRET" in CLIENT_SECRET:
+    st.error("❗ Tus credenciales de Spotify no están definidas correctamente en `secrets.toml`.")
+    st.stop()
+
 # ================== FUNCIONES OAUTH ==================
 def get_auth_url():
     params = {
@@ -38,7 +42,12 @@ def get_token_from_code(code):
         'client_secret': CLIENT_SECRET,
     }
     response = requests.post(token_url, data=payload)
-    print("🔁 TOKEN RESPONSE:", response.status_code, response.text)
+
+    if response.status_code != 200:
+        st.error(f"❌ Error al obtener token: {response.status_code}")
+        st.code(response.text, language='json')
+        return {}
+
     return response.json()
 
 # ================== FUNCIONES DE DATOS ==================
