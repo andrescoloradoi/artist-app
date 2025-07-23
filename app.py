@@ -46,6 +46,7 @@ def get_token_from_code(code):
     if response.status_code != 200:
         st.error(f"❌ Error al obtener token: {response.status_code}")
         st.code(response.text, language='json')
+        st.error(f"❌ Error al obtener code: {code}")
         return {}
 
     return response.json()
