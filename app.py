@@ -102,7 +102,7 @@ else:
     token_data = get_token_from_code(code)
     access_token = token_data.get("access_token")
     if not access_token:
-        st.error("❌ No se pudo obtener token. Intenta de nuevo.")
+        #st.error("❌ No se pudo obtener token. Intenta de nuevo.")
     else:
         st.success("✅ Autenticación exitosa")
         st.subheader("Tus canciones más escuchadas")
