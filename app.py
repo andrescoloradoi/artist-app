@@ -38,6 +38,7 @@ def get_token_from_code(code):
         'client_secret': CLIENT_SECRET,
     }
     response = requests.post(token_url, data=payload)
+    print("🔁 TOKEN RESPONSE:", response.status_code, response.text)
     return response.json()
 
 # ================== FUNCIONES DE DATOS ==================
