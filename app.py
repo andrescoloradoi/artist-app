@@ -82,7 +82,7 @@ def predict_popularity(df):
 st.set_page_config(page_title="Artista Insights", layout="wide")
 st.title("🎧 Artist Insights Dashboard")
 
-query_params = st.st.query_params()
+query_params = st.query_params()
 code = query_params.get("code", [None])[0]
 
 if not code:
