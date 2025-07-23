@@ -94,7 +94,8 @@ st.set_page_config(page_title="Artista Insights", layout="wide")
 st.title("🎧 Artist Insights Dashboard")
 
 query_params = st.query_params
-code = query_params.get("code", [None])[0]
+code_list = query_params.get("code", [])
+code = urlparse.unquote(code_list[0]) if code_list else None
 
 if not code:
     auth_url = get_auth_url()
